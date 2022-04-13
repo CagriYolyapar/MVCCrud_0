@@ -1,0 +1,26 @@
+﻿@model CategoryVM
+
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+@using(Html.BeginForm())
+ {
+    <div>
+        @Html.TextBoxFor( x => x.Category.CategoryName,new { @class="form-control",placeholder="Kategori ismi giriniz"})
+    </div>
+
+
+    <br />
+
+    <div>
+        @Html.TextBoxFor(x => x.Category.Description, new {@class="form-control",placeholder = "Kategori acıklaması giriniz"})
+    </div>
+
+    <br />
+
+    <button class="btn btn-primary">Ekle</button>
+
+
+ }
+

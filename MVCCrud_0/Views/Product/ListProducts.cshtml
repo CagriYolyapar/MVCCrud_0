@@ -1,0 +1,53 @@
+﻿@model ProductVM
+
+@{
+    ViewBag.Title = "ListProducts";
+}
+
+<div class="jumbotron">
+    Ürün Listesi, Urun eklemek icin @Html.ActionLink("tıklayınız","AddProduct")
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Isim</th>
+                    <th>Fiyat</th>
+                    <th>Kategorisi</th>
+                    <th colspan="2" style="text-align:center;padding-right:20px">Islemler</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Product item in Model.Products)
+                {
+                    <tr>
+                        <td>@item.ProductID</td>
+                        <td>@item.ProductName
+                        </td>
+                        <td>@item.UnitPrice</td>
+
+                        @if(item.Category == null)
+                {
+                    <td>Kategorisi yok</td>
+                }
+                else
+                {
+                    <td>@item.Category.CategoryName</td>
+                }
+
+                    <td> @Html.ActionLink("Guncelle","UpdateProduct",new { id=item.ProductID},new { @class="btn btn-warning"})</td>
+
+                        <td>@Html.ActionLink("Sil","DeleteProduct",new { id=item.ProductID},new { @class="btn btn-danger"})</td>
+                    </tr>
+                }
+
+              
+            </tbody>
+        </table>
+    </div>
+</div>
+
